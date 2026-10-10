@@ -53,10 +53,6 @@ h1, h2, h3 { font-variation-settings: "wdth" 112; letter-spacing: -.01em; }
 .search input::placeholder { color: #5f7480; }
 .search button { border: 0; border-radius: 999px; background: var(--navy); color: #fff; font: 700 16px Archivo, sans-serif; padding: 0 24px; cursor: pointer; }
 .search button:hover { background: var(--navy-2); }
-.popular { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 16px auto 0; max-width: 720px; font-size: 14px; }
-.popular span { padding: 6px 4px; font-weight: 600; text-shadow: 0 1px 8px rgba(8,30,50,.5); }
-.popular a { text-decoration: none; background: rgba(255,255,255,.9); color: var(--ink); border-radius: 999px; padding: 6px 13px; font-weight: 600; }
-.popular a:hover { background: #fff; }
 .credit { position: absolute; z-index: 1; right: 14px; bottom: 10px; font-size: 12px; color: rgba(255,255,255,.92); text-shadow: 0 1px 4px rgba(0,0,0,.6); }
 .credit a { color: inherit; }
 
@@ -69,18 +65,42 @@ h1, h2, h3 { font-variation-settings: "wdth" 112; letter-spacing: -.01em; }
 .tools { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 28px; }
 .tool:nth-child(1), .tool:nth-child(4) { grid-column: span 7; }
 .tool:nth-child(2), .tool:nth-child(3) { grid-column: span 5; }
-.tool > a { display: flex; flex-direction: column; height: 100%; text-decoration: none; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: #fff; transition: box-shadow .2s, transform .2s; }
-.tool > a:hover { box-shadow: 0 14px 40px rgba(15,42,58,.12); transform: translateY(-3px); }
-.shot { display: block; background: var(--accent); padding: 24px 24px 0; height: 300px; overflow: hidden; }
-.shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: left top; border-radius: 10px 10px 0 0; box-shadow: 0 10px 30px rgba(15,42,58,.25); }
-.t-courses { --accent: var(--courses); } .t-housing { --accent: var(--housing); } .t-food { --accent: var(--food); } .t-guide { --accent: var(--guide); }
-.tool .txt { display: block; padding: 22px 24px 24px; }
-.tool h3 { margin: 0 0 6px; font-size: 26px; line-height: 1.15; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-.tool h3::before { content: ""; width: 12px; height: 12px; border-radius: 4px; background: var(--accent); flex: none; }
-.tool p { margin: 0 0 12px; color: var(--ink-2); }
-.feat { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 15px; }
-.feat li { display: flex; gap: 9px; align-items: baseline; }
-.feat li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; transform: translateY(-1px); }
+.t-courses { --a: #e9a23b; --a2: #f8d27f; --ai: #95560a; --at: #fdf2e0; }
+.t-housing { --a: #2f7fb0; --a2: #7fc3e8; --ai: #1c5f88; --at: #e5f1f9; }
+.t-food { --a: #5c9b38; --a2: #a9d67c; --ai: #3a6e1f; --at: #ebf5e2; }
+.t-guide { --a: #c4505c; --a2: #f0a0a6; --ai: #9e3240; --at: #fbe8ea; }
+.tool > a {
+  display: flex; flex-direction: column; height: 100%; text-decoration: none; background: #fff; border-radius: 24px; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15,42,58,.06), 0 8px 28px rgba(15,42,58,.09); transition: box-shadow .25s, transform .25s;
+}
+.tool > a:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(15,42,58,.06), 0 20px 50px rgba(15,42,58,.16); }
+.shot {
+  display: block; height: 310px; padding: 28px 28px 0; overflow: hidden;
+  background: radial-gradient(120% 90% at 0% 0%, rgba(255,255,255,.38), rgba(255,255,255,0) 55%), linear-gradient(135deg, var(--a), var(--a2));
+}
+.win {
+  display: flex; flex-direction: column; height: 100%; background: #fff; border-radius: 12px 12px 0 0; overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15,42,58,.28); transform: translateY(8px); transition: transform .3s ease;
+}
+.tool > a:hover .win { transform: translateY(0); }
+.bar { flex: none; display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; background: #f2f4f6; border-bottom: 1px solid #e2e7eb; }
+.bar i { width: 9px; height: 9px; border-radius: 50%; }
+.bar i:nth-child(1) { background: #ff6159; } .bar i:nth-child(2) { background: #ffbd2e; } .bar i:nth-child(3) { background: #28c941; }
+.bar em { margin-left: 8px; min-width: 0; font: 500 12px Archivo, sans-serif; color: #4f626d; background: #fff; border-radius: 6px; padding: 2px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.win img { display: block; width: 100%; flex: 1; min-height: 0; object-fit: cover; object-position: left top; }
+.txt { display: flex; flex-direction: column; flex: 1; padding: 24px 28px 26px; }
+.head { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.ico { flex: none; width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; background: var(--at); color: var(--ai); }
+.ico svg { width: 24px; height: 24px; }
+.tool h3 { margin: 0; font-size: 27px; line-height: 1.12; font-weight: 800; }
+.tool p { margin: 0 0 14px; color: var(--ink-2); }
+.feat { margin: 0 0 22px; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
+.feat li { display: flex; gap: 10px; align-items: flex-start; }
+.feat li::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: 2px; background: var(--ai);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E") center / contain no-repeat; }
+.go { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: var(--ai); background: var(--at); border-radius: 999px; padding: 9px 18px; }
+.go svg { width: 16px; height: 16px; transition: transform .2s; }
+.tool > a:hover .go svg { transform: translateX(3px); }
 
 /* News */
 .news { background: var(--band); }
@@ -131,7 +151,8 @@ footer a { text-decoration: none; } footer a:hover { text-decoration: underline;
   .search input { font-size: 16px; padding: 10px 12px; }
   .search button { padding: 0 16px; }
   .sec { padding: 52px 0; }
-  .shot { padding: 14px 14px 0; }
+  .shot { padding: 16px 16px 0; }
+  .txt { padding: 20px 20px 22px; }
   .tool h3 { font-size: 23px; }
   .links { grid-template-columns: 1fr; }
   footer .wrap { grid-template-columns: 1fr; }
@@ -162,17 +183,9 @@ footer a { text-decoration: none; } footer a:hover { text-decoration: underline;
   <div class="hero-in wrap">
     <h1 id="h1" data-i18n="h1">Everything for student life in Madison</h1>
     <form class="search" action="https://courses.madisonstudents.com/" method="get" role="search">
-      <input name="q" type="search" autocomplete="off" aria-label="Search courses" data-i18n-ph="ph" placeholder="Search courses: CS 577, calculus, an instructor…">
+      <input name="q" type="search" autocomplete="off" aria-label="Search courses" data-i18n-ph="ph" placeholder="Search courses">
       <button type="submit" data-i18n="go">Search</button>
     </form>
-    <div class="popular">
-      <span data-i18n="popular">Popular:</span>
-      <a href="https://courses.madisonstudents.com/?q=COMP+SCI+300">COMP SCI 300</a>
-      <a href="https://courses.madisonstudents.com/?q=MATH+234">MATH 234</a>
-      <a href="https://courses.madisonstudents.com/?q=STAT+240">STAT 240</a>
-      <a href="https://courses.madisonstudents.com/?q=CHEM+103">CHEM 103</a>
-      <a href="https://courses.madisonstudents.com/?q=COMP+SCI+220">COMP SCI 220</a>
-    </div>
   </div>
   <div class="credit"><span data-i18n="photo">Photo</span>: <a href="https://commons.wikimedia.org/wiki/File:State_of_the_Map_US_2026_capitol_photo_1.jpg">Justin Meyers</a></div>
 </section>
@@ -181,28 +194,40 @@ footer a { text-decoration: none; } footer a:hover { text-decoration: underline;
   <div class="sec-h"><h2 id="tools-h" data-i18n="toolsH">Tools</h2></div>
   <ul class="tools">
     <li class="tool t-courses"><a href="https://courses.madisonstudents.com/">
-      <span class="shot"><img src="img/courses.webp" width="960" height="600" alt="" loading="lazy"></span>
-      <span class="txt"><h3 data-i18n="courses">Courses</h3>
+      <span class="shot"><span class="win"><span class="bar"><i></i><i></i><i></i><em>courses.madisonstudents.com</em></span><img src="img/courses.webp" width="960" height="600" alt="" loading="lazy"></span></span>
+      <span class="txt">
+        <span class="head"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 0 2 2h13"/><path d="M9 8h6M9 12h4"/></svg></span><h3 data-i18n="courses">Courses</h3></span>
         <p data-i18n="coursesD">Look up any UW–Madison course before you enroll.</p>
-        <ul class="feat"><li data-i18n="c1">Grade distributions by term and by instructor</li><li data-i18n="c2">This term's sections, times and open seats</li><li data-i18n="c3">A planner that builds clash-free schedules</li></ul></span>
+        <ul class="feat"><li data-i18n="c1">Grade distributions by term and by instructor</li><li data-i18n="c2">This term's sections, times and open seats</li><li data-i18n="c3">A planner that builds clash-free schedules</li></ul>
+        <span class="go"><span data-i18n="open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </span>
     </a></li>
     <li class="tool t-housing"><a href="https://housing.madisonstudents.com/">
-      <span class="shot"><img src="img/housing.webp" width="960" height="600" alt="" loading="lazy"></span>
-      <span class="txt"><h3 data-i18n="housing">Housing</h3>
+      <span class="shot"><span class="win"><span class="bar"><i></i><i></i><i></i><em>housing.madisonstudents.com</em></span><img src="img/housing.webp" width="960" height="600" alt="" loading="lazy"></span></span>
+      <span class="txt">
+        <span class="head"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3 data-i18n="housing">Housing</h3></span>
         <p data-i18n="housingD">Rentals near campus from landlord sites and the UW listings.</p>
-        <ul class="feat"><li data-i18n="h1b">Photo cards and a map</li><li data-i18n="h2b">Prices per person or for the whole unit</li><li data-i18n="h3b">Walking time and the nearest bus stops</li></ul></span>
+        <ul class="feat"><li data-i18n="h1b">Photo cards and a map</li><li data-i18n="h2b">Prices per person or for the whole unit</li><li data-i18n="h3b">Walking time and the nearest bus stops</li></ul>
+        <span class="go"><span data-i18n="open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </span>
     </a></li>
     <li class="tool t-food"><a href="https://food.madisonstudents.com/">
-      <span class="shot"><img src="img/food.webp" width="960" height="600" alt="" loading="lazy"></span>
-      <span class="txt"><h3 data-i18n="food">Food</h3>
+      <span class="shot"><span class="win"><span class="bar"><i></i><i></i><i></i><em>food.madisonstudents.com</em></span><img src="img/food.webp" width="960" height="600" alt="" loading="lazy"></span></span>
+      <span class="txt">
+        <span class="head"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8a2 2 0 0 0 2 2v8"/><path d="M11 3v8a2 2 0 0 1-2 2"/><path d="M17 21V3c-2 1-3 4-3 8h3"/></svg></span><h3 data-i18n="food">Food</h3></span>
         <p data-i18n="foodD">Every place to eat in Madison on one map.</p>
-        <ul class="feat"><li data-i18n="f1">Ratings from six platforms, combined</li><li data-i18n="f2">Which delivery apps carry each place</li><li data-i18n="f3">Open-now filter and a random pick</li></ul></span>
+        <ul class="feat"><li data-i18n="f1">Ratings from six platforms, combined</li><li data-i18n="f2">Which delivery apps carry each place</li><li data-i18n="f3">Open-now filter and a random pick</li></ul>
+        <span class="go"><span data-i18n="open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </span>
     </a></li>
     <li class="tool t-guide"><a href="https://guide.madisonstudents.com/">
-      <span class="shot"><img src="img/guide.webp" width="960" height="600" alt="" loading="lazy"></span>
-      <span class="txt"><h3 data-i18n="guide">Campus guide</h3>
+      <span class="shot"><span class="win"><span class="bar"><i></i><i></i><i></i><em>guide.madisonstudents.com</em></span><img src="img/guide.webp" width="960" height="600" alt="" loading="lazy"></span></span>
+      <span class="txt">
+        <span class="head"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><h3 data-i18n="guide">Campus guide</h3></span>
         <p data-i18n="guideD">The everyday places around campus, explained.</p>
-        <ul class="feat"><li data-i18n="g1">Groceries, clinics, campus offices, gyms and banks</li><li data-i18n="g2">Hours, phone and address, each with its source</li><li data-i18n="g3">Ask a question in English or Chinese</li></ul></span>
+        <ul class="feat"><li data-i18n="g1">Groceries, clinics, campus offices, gyms and banks</li><li data-i18n="g2">Hours, phone and address, each with its source</li><li data-i18n="g3">Ask a question in English or Chinese</li></ul>
+        <span class="go"><span data-i18n="open">Open</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </span>
     </a></li>
   </ul>
 </div></section>
@@ -251,8 +276,8 @@ footer a { text-decoration: none; } footer a:hover { text-decoration: underline;
 (function () {
   var ZH = {
     courses: "选课", housing: "租房", food: "吃饭", guide: "校园指南", news: "新闻",
-    h1: "在麦迪逊上学，常用的都在这里", ph: "搜课程：CS 577、微积分、老师名字……", go: "搜索", popular: "热门：", photo: "摄影",
-    toolsH: "工具",
+    h1: "在麦迪逊上学，常用的都在这里", ph: "搜索课程", go: "搜索", photo: "摄影",
+    toolsH: "工具", open: "打开",
     coursesD: "选课前把威大任何一门课查清楚。", c1: "历年成绩分布，可按学期、按老师看", c2: "本学期的班级、上课时间和剩余名额", c3: "自动排出不冲突的课表",
     housingD: "校园周边的出租房，汇总房东官网和学校租房平台。", h1b: "照片卡片和地图两种看法", h2b: "按每人或整套看价格", h3b: "步行时间和最近的公交站",
     foodD: "麦迪逊所有能吃饭的地方，放在一张地图上。", f1: "六个平台的评分合在一起", f2: "每家店能在哪些外卖平台点", f3: "只看营业中，或者随机帮你挑一家",
