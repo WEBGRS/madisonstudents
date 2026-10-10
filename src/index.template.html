@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Madison Students</title>
-<meta name="description" content="Free tools for students in Madison: course grades and planning, rentals near campus, every place to eat, and a guide to everyday places around campus.">
+<meta name="description" content="Free tools for students in Madison: course grades and planning, rentals near campus, every place to eat, a guide to everyday places around campus, and daily campus news in Chinese.">
 <meta name="theme-color" content="#eef3ef">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f5d80'/%3E%3Cpath d='M0 20 C8 17 14 22 20 19 S28 16 32 18 V32 H0Z' fill='%23a9cde0'/%3E%3Ctext x='16' y='17' font-family='Arial,sans-serif' font-weight='800' font-size='14' fill='white' text-anchor='middle'%3EMS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,21 +14,21 @@
 :root {
   --land: #eef3ef; --lake: #a9cde0; --shore: #2f6f93; --ink: #0f2a3a; --ink-2: #2e4a5a; --pin: #0f2a3a;
   --chip: #ffffff; --chip-line: #c9d7dd;
-  --courses: #e9a23b; --housing: #3d8dba; --food: #6ba547; --guide: #c95a63;
+  --courses: #e9a23b; --housing: #3d8dba; --food: #6ba547; --guide: #c95a63; --news: #5b6fb3;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --land: #0e1a21; --lake: #17384c; --shore: #5aa2c9; --ink: #e9f2f6; --ink-2: #b9ccd6; --pin: #e9f2f6;
     --chip: #15262f; --chip-line: #2a4350;
-    --courses: #c7862a; --housing: #2f7aa5; --food: #548c35; --guide: #a9475a;
+    --courses: #c7862a; --housing: #2f7aa5; --food: #548c35; --guide: #a9475a; --news: #4a5b9c;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --land: #0e1a21; --lake: #17384c; --shore: #5aa2c9; --ink: #e9f2f6; --ink-2: #b9ccd6; --pin: #e9f2f6;
   --chip: #15262f; --chip-line: #2a4350;
-  --courses: #c7862a; --housing: #2f7aa5; --food: #548c35; --guide: #a9475a;
+  --courses: #c7862a; --housing: #2f7aa5; --food: #548c35; --guide: #a9475a; --news: #4a5b9c;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -79,11 +79,18 @@ main { padding: 40px 0 8px; }
 .t-housing { --accent: var(--housing); }
 .t-food { --accent: var(--food); }
 .t-guide { --accent: var(--guide); }
+.t-news { --accent: var(--news); }
+@media (min-width: 761px) {
+  .tool.wide { grid-column: 1 / -1; }
+  .tool.wide a { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 40px; align-items: center; }
+  .tool.wide h2 { margin-top: 0; }
+}
 .tool h2 {
   margin: 18px 0 6px; font-size: 30px; line-height: 1.1; font-weight: 750; letter-spacing: -.01em;
   font-variation-settings: "wdth" 118;
 }
 .tool p { margin: 0; max-width: 46ch; color: var(--ink-2); }
+.txt { display: block; }
 footer .wrap { padding-top: 52px; padding-bottom: 96px; font-size: 14px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 18px; }
 footer a { color: inherit; }
 
@@ -149,6 +156,11 @@ footer a { color: inherit; }
       <h2 data-i18n="guide">Campus guide</h2>
       <p data-i18n="guideD">Groceries, campus offices, clinics, gyms, banks and transit, each explained with sources.</p>
     </a></li>
+    <li class="tool t-news wide"><a href="https://news.madisonstudents.com/">
+      <span class="shot"><img src="img/news.webp" width="960" height="600" alt="" decoding="async"></span>
+      <span class="txt"><h2 data-i18n="news">News</h2>
+      <p data-i18n="newsD">UW–Madison and Madison news from fourteen official and local sources, checked every morning, rated for students and summarized in Chinese.</p></span>
+    </a></li>
   </ul>
 </div></main>
 
@@ -165,6 +177,7 @@ footer a { color: inherit; }
     housing: "租房", housingD: "校园周边的出租房，汇总房东官网和学校租房平台，放在一张地图上。",
     food: "吃饭", foodD: "麦迪逊所有能吃饭的地方，一张地图看完六个平台的评分，以及哪些外卖平台能点。",
     guide: "校园指南", guideD: "超市、学校办事处、诊所、健身房、银行、交通，每个地方都有说明和信息来源。",
+    news: "新闻", newsD: "每天早上汇总 14 个官方和本地来源的威大与麦迪逊新闻，按对学生的重要性打分，用中文摘要。",
     note: "学生个人项目，与威斯康星大学麦迪逊分校无官方关系。", osm: "湖岸线", contrib: "贡献者"
   };
   var EN = {};
