@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Madison Students</title>
+<meta name="description" content="Free tools for students in Madison: course grades and planning, rentals near campus, every place to eat, and a guide to everyday places around campus.">
+<meta name="theme-color" content="#eef3ef">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f5d80'/%3E%3Cpath d='M0 20 C8 17 14 22 20 19 S28 16 32 18 V32 H0Z' fill='%23a9cde0'/%3E%3Ctext x='16' y='17' font-family='Arial,sans-serif' font-weight='800' font-size='14' fill='white' text-anchor='middle'%3EMS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --land: #eef3ef; --lake: #a9cde0; --shore: #2f6f93; --ink: #0f2a3a; --ink-2: #2e4a5a; --pin: #0f2a3a;
+  --chip: #ffffff; --chip-line: #c9d7dd;
+  --courses: #e9a23b; --housing: #3d8dba; --food: #6ba547; --guide: #c95a63;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --land: #0e1a21; --lake: #17384c; --shore: #5aa2c9; --ink: #e9f2f6; --ink-2: #b9ccd6; --pin: #e9f2f6;
+    --chip: #15262f; --chip-line: #2a4350;
+    --courses: #c7862a; --housing: #2f7aa5; --food: #548c35; --guide: #a9475a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --land: #0e1a21; --lake: #17384c; --shore: #5aa2c9; --ink: #e9f2f6; --ink-2: #b9ccd6; --pin: #e9f2f6;
+  --chip: #15262f; --chip-line: #2a4350;
+  --courses: #c7862a; --housing: #2f7aa5; --food: #548c35; --guide: #a9475a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--land); color: var(--ink);
+  font: 400 17px/1.55 Archivo, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-variation-settings: "wdth" 100;
+}
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero: the isthmus between Lake Mendota and Lake Monona */
+.hero { position: relative; height: clamp(320px, 40vw, 480px); overflow: hidden; }
+.map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lake { fill: var(--lake); stroke: var(--shore); stroke-width: 1.6; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.lake-name { fill: var(--shore); font: italic 500 15px Archivo, sans-serif; letter-spacing: .14em; }
+.pin circle { fill: var(--pin); }
+.pin .ring { fill: none; stroke: var(--pin); stroke-width: 1.4; }
+.pin text { fill: var(--ink); font: 600 13px Archivo, sans-serif; paint-order: stroke; stroke: var(--land); stroke-width: 4px; stroke-linejoin: round; }
+.hero-in { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 36px; }
+h1 {
+  margin: 0; max-width: 9ch; font-weight: 800; font-size: clamp(48px, 8.4vw, 104px); line-height: .9;
+  letter-spacing: -.02em; font-variation-settings: "wdth" 125; color: var(--ink);
+}
+#lang {
+  position: absolute; top: 20px; right: 24px;
+  font: 600 15px Archivo, sans-serif; color: var(--ink); background: var(--chip);
+  border: 1.5px solid var(--chip-line); border-radius: 999px; padding: 7px 16px; cursor: pointer;
+}
+#lang:hover { border-color: var(--shore); }
+#lang:focus-visible, .tool a:focus-visible { outline: 3px solid var(--shore); outline-offset: 3px; }
+
+/* Tools */
+main { padding: 40px 0 8px; }
+.tools { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 32px; }
+.tool a { display: block; color: inherit; text-decoration: none; }
+.shot {
+  display: block; aspect-ratio: 16 / 10.6; overflow: hidden; border-radius: 18px;
+  background: var(--accent); padding: 22px 22px 0;
+}
+.shot img {
+  display: block; width: 100%; height: auto; border-radius: 10px 10px 0 0;
+  box-shadow: 0 -1px 0 rgba(15,42,58,.08), 0 10px 30px rgba(15,42,58,.28);
+  transform: translateY(6px); transition: transform .25s ease;
+}
+.tool a:hover .shot img { transform: translateY(-4px); }
+.t-courses { --accent: var(--courses); }
+.t-housing { --accent: var(--housing); }
+.t-food { --accent: var(--food); }
+.t-guide { --accent: var(--guide); }
+.tool h2 {
+  margin: 18px 0 6px; font-size: 30px; line-height: 1.1; font-weight: 750; letter-spacing: -.01em;
+  font-variation-settings: "wdth" 118;
+}
+.tool p { margin: 0; max-width: 46ch; color: var(--ink-2); }
+footer .wrap { padding-top: 52px; padding-bottom: 96px; font-size: 14px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 18px; }
+footer a { color: inherit; }
+
+/* One load moment: the shorelines draw in */
+@media (prefers-reduced-motion: no-preference) {
+  .lake { stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; animation: shore 1.6s ease-out forwards, fill .9s .7s ease-out forwards; }
+  .lake:nth-of-type(2) { animation-delay: .25s, .95s; }
+  .lake:nth-of-type(3) { animation-delay: .45s, 1.1s; }
+  @keyframes shore { to { stroke-dashoffset: 0; } }
+  @keyframes fill { to { fill-opacity: 1; } }
+}
+@media (prefers-reduced-motion: reduce) { .shot img { transition: none; } }
+
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
+  .hero { height: 400px; }
+  .hero-in { padding-bottom: 24px; }
+  #lang { top: 14px; right: 16px; }
+  .tools { grid-template-columns: 1fr; gap: 36px; }
+  .shot { padding: 14px 14px 0; border-radius: 14px; }
+  .tool h2 { font-size: 26px; margin-top: 14px; }
+  .lake-name { display: none; }
+  .pin text { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <svg class="map" viewBox="0 0 1200 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="lake" pathLength="1" d="{{MENDOTA}}"/>
+    <path class="lake" pathLength="1" d="{{MONONA}}"/>
+    <path class="lake" pathLength="1" d="{{WINGRA}}"/>
+    <text class="lake-name" x="{{MEN_X}}" y="{{MEN_Y}}" data-i18n="mendota">Lake Mendota</text>
+    <text class="lake-name" x="{{MON_X}}" y="{{MON_Y}}" data-i18n="monona">Lake Monona</text>
+    <g class="pin"><circle cx="{{BAS_X}}" cy="{{BAS_Y}}" r="4.5"/><text x="{{BAS_TX}}" y="{{BAS_TY}}" text-anchor="middle" data-i18n="campus">Campus</text></g>
+    <g class="pin"><circle class="ring" cx="{{CAP_X}}" cy="{{CAP_Y}}" r="8"/><circle cx="{{CAP_X}}" cy="{{CAP_Y}}" r="3.5"/><text x="{{CAP_TX}}" y="{{CAP_TY}}" data-i18n="capitol">Capitol</text></g>
+  </svg>
+  <div class="hero-in wrap">
+    <button id="lang" type="button" lang="zh-CN">中文</button>
+    <h1>Madison Students</h1>
+  </div>
+</header>
+
+<main><div class="wrap">
+  <ul class="tools">
+    <li class="tool t-courses"><a href="https://courses.madisonstudents.com/">
+      <span class="shot"><img src="img/courses.webp" width="960" height="600" alt="" decoding="async"></span>
+      <h2 data-i18n="courses">Courses</h2>
+      <p data-i18n="coursesD">Grade history, GPA by instructor, this term's sections and a schedule planner for UW–Madison courses.</p>
+    </a></li>
+    <li class="tool t-housing"><a href="https://housing.madisonstudents.com/">
+      <span class="shot"><img src="img/housing.webp" width="960" height="600" alt="" decoding="async"></span>
+      <h2 data-i18n="housing">Housing</h2>
+      <p data-i18n="housingD">Rentals near campus from landlord websites and the UW off-campus listings, on one map.</p>
+    </a></li>
+    <li class="tool t-food"><a href="https://food.madisonstudents.com/">
+      <span class="shot"><img src="img/food.webp" width="960" height="600" alt="" decoding="async"></span>
+      <h2 data-i18n="food">Food</h2>
+      <p data-i18n="foodD">Every place to eat in Madison on one map, with ratings from six platforms and which delivery apps carry it.</p>
+    </a></li>
+    <li class="tool t-guide"><a href="https://guide.madisonstudents.com/">
+      <span class="shot"><img src="img/guide.webp" width="960" height="600" alt="" decoding="async"></span>
+      <h2 data-i18n="guide">Campus guide</h2>
+      <p data-i18n="guideD">Groceries, campus offices, clinics, gyms, banks and transit, each explained with sources.</p>
+    </a></li>
+  </ul>
+</div></main>
+
+<footer><div class="wrap">
+  <span data-i18n="note">Independent student project. Not affiliated with the University of Wisconsin–Madison.</span>
+  <span><span data-i18n="osm">Lake outlines</span> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> <span data-i18n="contrib">contributors</span></span>
+</div></footer>
+
+<script>
+(function () {
+  var ZH = {
+    mendota: "门多塔湖", monona: "莫诺纳湖", campus: "校园", capitol: "州议会大厦",
+    courses: "选课", coursesD: "威大每门课的历年成绩分布、各老师 GPA、本学期上课时间，还能自动排课。",
+    housing: "租房", housingD: "校园周边的出租房，汇总房东官网和学校租房平台，放在一张地图上。",
+    food: "吃饭", foodD: "麦迪逊所有能吃饭的地方，一张地图看完六个平台的评分，以及哪些外卖平台能点。",
+    guide: "校园指南", guideD: "超市、学校办事处、诊所、健身房、银行、交通，每个地方都有说明和信息来源。",
+    note: "学生个人项目，与威斯康星大学麦迪逊分校无官方关系。", osm: "湖岸线", contrib: "贡献者"
+  };
+  var EN = {};
+  document.querySelectorAll("[data-i18n]").forEach(function (el) { EN[el.dataset.i18n] = el.textContent; });
+  function saved() { try { return localStorage.getItem("lang"); } catch (e) { return null; } }
+  var lang = saved() || ((navigator.language || "").toLowerCase().indexOf("zh") === 0 ? "zh" : "en");
+  var btn = document.getElementById("lang");
+  function apply() {
+    var zh = lang === "zh";
+    document.documentElement.lang = zh ? "zh-CN" : "en";
+    document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = (zh ? ZH : EN)[el.dataset.i18n]; });
+    btn.textContent = zh ? "English" : "中文";
+    btn.lang = zh ? "en" : "zh-CN";
+  }
+  // Phones see a tighter crop centred on the isthmus
+  var map = document.querySelector(".map"), mq = window.matchMedia("(max-width: 760px)");
+  function frame() { map.setAttribute("viewBox", mq.matches ? "{{PHONE_VB}}" : "0 0 1200 460"); }
+  if (mq.addEventListener) mq.addEventListener("change", frame); else mq.addListener(frame);
+  frame();
+  btn.addEventListener("click", function () {
+    lang = lang === "zh" ? "en" : "zh";
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    apply();
+  });
+  apply();
+})();
+</script>
+<script src="feedback.js" data-site="hub" data-star="WEBGRS/madisonstudents" defer></script>
+</body>
+</html>
