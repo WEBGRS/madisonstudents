@@ -131,6 +131,7 @@ footer .wrap { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; pad
 footer h4 { margin: 0 0 10px; color: var(--ink); font-size: 15px; }
 footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 footer a { text-decoration: none; } footer a:hover { text-decoration: underline; }
+footer .by { grid-column: 1 / -1; margin: 0; padding-top: 18px; border-top: 1px solid var(--line); }
 .about b { display: block; color: var(--ink); font-size: 17px; margin-bottom: 6px; }
 
 @media (prefers-reduced-motion: reduce) { .tool > a { transition: none; } .tool > a:hover { transform: none; } }
@@ -270,6 +271,7 @@ footer a { text-decoration: none; } footer a:hover { text-decoration: underline;
     <li><span data-i18n="photoBy">Photo of the Capitol</span>: <a href="https://commons.wikimedia.org/wiki/File:State_of_the_Map_US_2026_capitol_photo_1.jpg">Justin Meyers</a> <span data-i18n="pd">(public domain)</span></li>
     <li><a href="https://github.com/WEBGRS/madisonstudents" data-i18n="source">Source code</a></li>
   </ul></div>
+  <p class="by"><span data-i18n="madeBy">Made by H. Gu</span> · <a href="https://webgrs.github.io/">webgrs.github.io</a></p>
 </div></footer>
 
 <script>
@@ -287,7 +289,7 @@ footer a { text-decoration: none; } footer a:hover { text-decoration: underline;
     linksH: "学校常用链接", lCanvas: "课程主页和作业", lMyuw: "学生门户", lEnroll: "官方选课系统",
     lCalN: "校历", lCal: "学期日期和各种截止日", lUhsN: "学校医院 UHS", lUhs: "看病预约、心理咨询", lRecN: "学校健身中心", lRec: "健身房、游泳池和课程",
     lLibN: "图书馆", lLib: "自习室和数据库", lMetro: "公交线路和时刻", lIssN: "国际学生办公室 ISS", lIss: "签证、OPT、出入境", lCard: "学生卡",
-    note: "学生个人项目，与威斯康星大学麦迪逊分校无官方关系。", creditsH: "致谢", photoBy: "州议会大厦照片", pd: "（公有领域）", source: "源代码"
+    note: "学生个人项目，与威斯康星大学麦迪逊分校无官方关系。", creditsH: "致谢", photoBy: "州议会大厦照片", pd: "（公有领域）", source: "源代码", madeBy: "由 H. Gu 制作"
   };
   var CAT_ZH = { campus: "校园", academics: "学业", money: "学费与资助", international: "国际生", "health-safety": "健康与安全", events: "活动", city: "麦迪逊与威州" };
   var EN = { newsFail: "News could not be loaded right now. Open the news page instead.", updated: "Updated" }, ENPH = {};
