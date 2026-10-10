@@ -10,6 +10,6 @@ The front page of [madisonstudents.com](https://madisonstudents.com): free tools
 | Campus guide: everyday places around campus, with sources | [guide.madisonstudents.com](https://guide.madisonstudents.com) | [madison-campus-guide](https://github.com/WEBGRS/madison-campus-guide) |
 | News: daily UW–Madison and Madison news, rated and summarized in Chinese | [news.madisonstudents.com](https://news.madisonstudents.com) | [uw-digest](https://github.com/WEBGRS/uw-digest) |
 
-One static page (English / 中文, follows the browser language), served by GitHub Pages. Edit `src/index.template.html` and run `python src/build.py` to write `index.html`; the hero map is drawn from OpenStreetMap lake outlines (`src/data`, projected by `src/lakes.py`). Card pictures in `img/` are screenshots of each tool. `feedback.js` is the shared feedback widget.
+One static `index.html` (English / 中文, follows the browser language; light theme only), served by GitHub Pages. The hero photo of the Capitol is by Justin Meyers (public domain, Wikimedia Commons). The news list is read live from `news.madisonstudents.com/data/digest.json`. Card pictures in `img/` are screenshots of each tool. `feedback.js` is the shared feedback widget.
 
 Independent student project, not affiliated with the University of Wisconsin–Madison.
