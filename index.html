@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Madison Students</title>
+<meta name="description" content="Free tools for students in Madison: course grades and planning, rentals near campus, every place to eat, and a guide to everyday places around campus.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23245f86'/%3E%3Ctext x='16' y='23' font-family='Arial,sans-serif' font-weight='800' font-size='18' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #f6f7f9; --card: #ffffff; --ink: #14181f; --ink-2: #3b4350; --line: #dde1e7;
+  --accent: #245f86; --tile: #e6eff6; --shadow: 0 1px 2px rgba(20,24,31,.06), 0 4px 16px rgba(20,24,31,.06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1216; --card: #171b21; --ink: #eef1f5; --ink-2: #c3cad4; --line: #2a3039;
+    --accent: #7fb6dc; --tile: #1d2a35; --shadow: none; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1216; --card: #171b21; --ink: #eef1f5; --ink-2: #c3cad4; --line: #2a3039;
+  --accent: #7fb6dc; --tile: #1d2a35; --shadow: none; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.wrap { width: 100%; max-width: 880px; margin: 0 auto; padding: 0 16px; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 28px; padding-bottom: 20px; }
+h1 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.01em; }
+#lang {
+  font: inherit; font-size: 14px; color: var(--ink); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer;
+}
+#lang:hover { border-color: var(--accent); }
+.tools { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.tools a {
+  display: grid; grid-template-columns: 48px 1fr auto; align-items: start; gap: 14px;
+  height: 100%; padding: 20px; border: 1px solid var(--line); border-radius: 14px;
+  background: var(--card); color: inherit; text-decoration: none; box-shadow: var(--shadow);
+  transition: border-color .15s, transform .15s;
+}
+.tools a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.tools a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.icon { width: 48px; height: 48px; border-radius: 12px; background: var(--tile); color: var(--accent); display: grid; place-items: center; }
+.icon svg { width: 26px; height: 26px; }
+.tools h2 { margin: 2px 0 4px; font-size: 19px; line-height: 1.3; }
+.tools p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.go { color: var(--accent); font-size: 20px; line-height: 1; padding-top: 4px; }
+footer .wrap { padding-top: 28px; padding-bottom: 88px; font-size: 13px; color: var(--ink-2); }
+@media (max-width: 640px) {
+  .tools { grid-template-columns: 1fr; }
+  h1 { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .tools a { transition: none; } .tools a:hover { transform: none; } }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1 data-i18n="title">Madison Students</h1>
+  <button id="lang" type="button" lang="zh-CN">中文</button>
+</div></header>
+
+<main><div class="wrap">
+  <ul class="tools">
+    <li><a href="https://courses.madisonstudents.com/">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 0 2 2h13"/><path d="M9 8h6M9 12h4"/></svg></span>
+      <span><h2 data-i18n="courses">Courses</h2><p data-i18n="coursesD">Grade history, GPA by instructor, this term's sections and a schedule planner for UW–Madison courses.</p></span>
+      <span class="go" aria-hidden="true">→</span>
+    </a></li>
+    <li><a href="https://housing.madisonstudents.com/">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
+      <span><h2 data-i18n="housing">Housing</h2><p data-i18n="housingD">Rentals near campus from landlord websites and the UW off-campus listings, on one map.</p></span>
+      <span class="go" aria-hidden="true">→</span>
+    </a></li>
+    <li><a href="https://food.madisonstudents.com/">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8a2 2 0 0 0 2 2v8"/><path d="M11 3v8a2 2 0 0 1-2 2"/><path d="M17 21V3c-2 1-3 4-3 8h3"/></svg></span>
+      <span><h2 data-i18n="food">Food</h2><p data-i18n="foodD">Every place to eat in Madison on one map, with ratings from six platforms and which delivery apps carry it.</p></span>
+      <span class="go" aria-hidden="true">→</span>
+    </a></li>
+    <li><a href="https://guide.madisonstudents.com/">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+      <span><h2 data-i18n="guide">Campus guide</h2><p data-i18n="guideD">Groceries, campus offices, clinics, gyms, banks and transit, each explained with sources.</p></span>
+      <span class="go" aria-hidden="true">→</span>
+    </a></li>
+  </ul>
+</div></main>
+
+<footer><div class="wrap">
+  <span data-i18n="note">Independent student project. Not affiliated with the University of Wisconsin–Madison.</span>
+</div></footer>
+
+<script>
+(function () {
+  var ZH = {
+    title: "Madison Students",
+    courses: "选课", coursesD: "威大每门课的历年成绩分布、各老师 GPA、本学期上课时间，还能自动排课。",
+    housing: "租房", housingD: "校园周边的出租房，汇总房东官网和学校租房平台，放在一张地图上。",
+    food: "吃饭", foodD: "麦迪逊所有能吃饭的地方，一张地图看完六个平台的评分，以及哪些外卖平台能点。",
+    guide: "校园指南", guideD: "超市、学校办事处、诊所、健身房、银行、交通，每个地方都有说明和信息来源。",
+    note: "学生个人项目，与威斯康星大学麦迪逊分校无官方关系。"
+  };
+  var EN = {};
+  document.querySelectorAll("[data-i18n]").forEach(function (el) { EN[el.dataset.i18n] = el.textContent; });
+  function saved() { try { return localStorage.getItem("lang"); } catch (e) { return null; } }
+  var lang = saved() || ((navigator.language || "").toLowerCase().indexOf("zh") === 0 ? "zh" : "en");
+  var btn = document.getElementById("lang");
+  function apply() {
+    var zh = lang === "zh";
+    document.documentElement.lang = zh ? "zh-CN" : "en";
+    document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = (zh ? ZH : EN)[el.dataset.i18n]; });
+    btn.textContent = zh ? "English" : "中文";
+    btn.lang = zh ? "en" : "zh-CN";
+  }
+  btn.addEventListener("click", function () {
+    lang = lang === "zh" ? "en" : "zh";
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    apply();
+  });
+  apply();
+})();
+</script>
+<script src="feedback.js" data-site="hub" data-star="WEBGRS/madisonstudents" defer></script>
+</body>
+</html>
