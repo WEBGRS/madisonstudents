@@ -65,6 +65,7 @@ h1, h2, h3 { font-variation-settings: "wdth" 112; letter-spacing: -.01em; }
 .search input::placeholder { color: #5f7480; }
 .search button { border: 0; border-radius: 999px; background: var(--navy); color: #fff; font: 700 16px Archivo, sans-serif; padding: 0 24px; cursor: pointer; }
 .search button:hover { background: var(--navy-2); }
+.hero-note { margin: 14px auto 0; display: table; background: rgba(255,255,255,.94); color: var(--ink); font: 600 14px Archivo, sans-serif; padding: 7px 16px; border-radius: 999px; box-shadow: 0 6px 20px rgba(8,30,50,.2); }
 .credit { position: absolute; z-index: 1; right: 14px; bottom: 10px; font-size: 12px; color: rgba(255,255,255,.92); text-shadow: 0 1px 4px rgba(0,0,0,.6); }
 .credit a { color: inherit; }
 
@@ -201,6 +202,7 @@ footer .by a { color: var(--navy); font-weight: 600; }
       <input name="q" type="search" autocomplete="off" aria-label="Search courses" data-i18n-ph="ph" placeholder="Search courses">
       <button type="submit" data-i18n="go">Search</button>
     </form>
+    <p class="hero-note" data-i18n="heroNote">The Spring 2027 schedule will be updated on Oct 14. Stay tuned.</p>
   </div>
   <div class="credit"><span data-i18n="photo">Photo</span>: <a href="https://commons.wikimedia.org/wiki/File:State_of_the_Map_US_2026_capitol_photo_1.jpg">Justin Meyers</a></div>
 </section>
@@ -292,7 +294,7 @@ footer .by a { color: var(--navy); font-weight: 600; }
 (function () {
   var ZH = {
     courses: "选课", housing: "租房", food: "吃饭", guide: "校园指南", news: "新闻",
-    h1: "在麦迪逊上学，常用的都在这里", ph: "搜索课程", go: "搜索", photo: "摄影",
+    h1: "在麦迪逊上学，常用的都在这里", ph: "搜索课程", go: "搜索", heroNote: "10 月 14 日将更新春季课表，敬请期待。", photo: "摄影",
     toolsH: "工具", open: "打开",
     coursesD: "选课前先看看这门课难不难。", c1: "哪个老师给 A 最多", c2: "这学期哪些班还有名额", c3: "自动排出时间不冲突的课表",
     housingD: "在预算内找到离学校近的房子。", h1b: "按租金、卧室数、宠物、停车筛选", h2b: "离你上课、上班的地方有多远", h3b: "最近的公交站，走过去要几分钟",
