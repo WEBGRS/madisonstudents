@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Madison Students — UW–Madison Courses, Housing, Food &amp; News</title>
-<meta name="description" content="How hard a course is, a place near campus in your budget, what to eat tonight, where to run errands, and today&#39;s campus news, for UW–Madison students.">
+<title>Madison Students · 麦屯工具站 — UW–Madison Courses, Housing, Food &amp; News</title>
+<meta name="description" content="How hard a course is, a place near campus in your budget, what to eat tonight, where to run errands, and today&#39;s campus news, for UW–Madison students. 麦屯工具站：威大选课、租房、吃饭、办事和每日新闻。">
 <link rel="canonical" href="https://madisonstudents.com/">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Madison Students">
+<meta property="og:site_name" content="Madison Students · 麦屯工具站">
 <meta property="og:url" content="https://madisonstudents.com/">
-<meta property="og:title" content="Madison Students">
+<meta property="og:title" content="Madison Students · 麦屯工具站">
 <meta property="og:description" content="Courses, housing, food, a campus guide and daily news for UW–Madison students.">
 <meta property="og:image" content="https://madisonstudents.com/img/share.jpg">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://madisonstudents.com/#site","name":"Madison Students","alternateName":"madisonstudents.com","url":"https://madisonstudents.com/","inLanguage":["en","zh"],"publisher":{"@id":"https://madisonstudents.com/#org"}},{"@type":"Organization","@id":"https://madisonstudents.com/#org","name":"Madison Students","url":"https://madisonstudents.com/","logo":"https://madisonstudents.com/icon-512.png"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://madisonstudents.com/#site","name":"Madison Students","alternateName":["麦屯工具站","madisonstudents.com"],"url":"https://madisonstudents.com/","inLanguage":["en","zh"],"publisher":{"@id":"https://madisonstudents.com/#org"}},{"@type":"Organization","@id":"https://madisonstudents.com/#org","name":"Madison Students","alternateName":"麦屯工具站","url":"https://madisonstudents.com/","logo":"https://madisonstudents.com/icon-512.png"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
@@ -148,6 +148,7 @@ footer .by { grid-column: 1 / -1; margin: 0; padding-top: 18px; border-top: 1px 
 footer .by b { color: var(--ink); font-size: 17px; font-weight: 700; margin-left: 2px; }
 footer .by a { color: var(--navy); font-weight: 600; }
 .about b { display: block; color: var(--ink); font-size: 17px; margin-bottom: 6px; }
+.about .alias { margin-left: 6px; font-size: 15px; font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) { .tool > a { transition: none; } .tool > a:hover { transform: none; } }
 @media (max-width: 980px) {
@@ -275,7 +276,7 @@ footer .by a { color: var(--navy); font-weight: 600; }
 </div></section>
 
 <footer><div class="wrap">
-  <div class="about"><b>Madison Students</b><span data-i18n="note">Independent student project. Not affiliated with the University of Wisconsin–Madison.</span></div>
+  <div class="about"><b>Madison Students <span class="alias" lang="zh-CN">麦屯工具站</span></b><span data-i18n="note">Independent student project. Not affiliated with the University of Wisconsin–Madison.</span></div>
   <div><h4 data-i18n="toolsH">Tools</h4><ul>
     <li><a href="https://courses.madisonstudents.com/" data-i18n="courses">Courses</a></li>
     <li><a href="https://housing.madisonstudents.com/" data-i18n="housing">Housing</a></li>
@@ -308,7 +309,7 @@ footer .by a { color: var(--navy); font-weight: 600; }
     note: "学生个人项目，与威斯康星大学麦迪逊分校无官方关系。", creditsH: "致谢", photoBy: "州议会大厦照片", pd: "（公有领域）", source: "源代码", madeBy: "作者"
   };
   var CAT_ZH = { campus: "校园", academics: "学业", money: "学费与资助", international: "国际生", "health-safety": "健康与安全", events: "活动", city: "麦迪逊与威州" };
-  var EN = { newsFail: "News could not be loaded right now. Open the news page instead.", updated: "Updated" }, ENPH = {};
+  var EN = { newsFail: "News could not be loaded right now. Open the news page instead.", updated: "Updated" }, ENPH = {}, TITLE_EN = document.title;
   document.querySelectorAll("[data-i18n]").forEach(function (el) { EN[el.dataset.i18n] = el.textContent; });
   document.querySelectorAll("[data-i18n-ph]").forEach(function (el) { ENPH[el.dataset.i18nPh] = el.placeholder; });
   function saved() { try { return localStorage.getItem("lang"); } catch (e) { return null; } }
@@ -345,6 +346,7 @@ footer .by a { color: var(--navy); font-weight: 600; }
   function apply() {
     var zh = lang === "zh";
     document.documentElement.lang = zh ? "zh-CN" : "en";
+    document.title = zh ? "麦屯工具站 · Madison Students — 威大选课、租房、吃饭、新闻" : TITLE_EN;
     document.querySelectorAll("[data-i18n]").forEach(function (e) { e.textContent = T(e.dataset.i18n); });
     document.querySelectorAll("[data-i18n-ph]").forEach(function (e) { e.placeholder = zh ? ZH[e.dataset.i18nPh] : ENPH[e.dataset.i18nPh]; });
     btn.textContent = zh ? "English" : "中文";
