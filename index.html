@@ -370,6 +370,9 @@ footer .by a { color: var(--navy); font-weight: 600; }
     (digest.days || []).forEach(function (day) {
       (day.items || []).forEach(function (it) {
         if (it.drop || !/^https?:\/\//.test(it.url || "") || !(it.title || it.zh_title)) return;
+        // Skip events that already started and deadlines that passed
+        if (/\/events?\//.test(it.url) && toDate(it.published).getTime() < Date.now()) return;
+        if (it.deadline && toDate(it.deadline).getTime() + 864e5 < Date.now()) return;
         var key = String(it.title || it.zh_title).toLowerCase().replace(/[^a-z0-9一-鿿]+/g, "");
         if (seen[key] || seen[it.url]) return;
         seen[key] = seen[it.url] = true;
