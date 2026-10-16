@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Madison Students</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="https://madisonstudents.com/favicon.ico" sizes="48x48">
+<link rel="icon" href="https://madisonstudents.com/favicon.svg" type="image/svg+xml">
+<script>
+// /courses, /food ... go to the tool's own address
+(function () {
+  var m = location.pathname.toLowerCase().match(/^\/(courses?|housing|rentals?|food|eats|guide|essentials|news|digest)(\/|$)/);
+  if (!m) return;
+  var sub = { course: "courses", courses: "courses", housing: "housing", rental: "housing", rentals: "housing", food: "food", eats: "food", guide: "guide", essentials: "guide", news: "news", digest: "news" }[m[1]];
+  location.replace("https://" + sub + ".madisonstudents.com/" + location.search);
+})();
+</script>
+<style>
+:root { --ink: #0f2a3a; --ink-2: #39535f; --line: #e1e8ee; --navy: #1f5d80; color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 400 17px/1.55 system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+main { max-width: 560px; margin: 0 auto; padding: 18vh 24px 48px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 19px; color: var(--ink); }
+.brand svg { width: 30px; height: 30px; }
+h1 { font-size: 32px; margin: 28px 0 20px; letter-spacing: -.01em; }
+ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+li a { display: block; padding: 13px 2px; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; font-weight: 600; }
+li a:hover { color: var(--navy); }
+:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="brand" href="https://madisonstudents.com/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#d0312d"/><path d="M0 21 C8 18 14 23 20 20 S28 17 32 19 V32 H0Z" fill="#f6b4ad"/><text x="16" y="17" font-family="Arial,sans-serif" font-weight="800" font-size="13" fill="#fff" text-anchor="middle">MS</text></svg>Madison Students</a>
+  <h1 data-zh="页面不存在">Page not found</h1>
+  <ul>
+    <li><a href="https://madisonstudents.com/" data-zh="首页">Home</a></li>
+    <li><a href="https://courses.madisonstudents.com/" data-zh="选课">Courses</a></li>
+    <li><a href="https://housing.madisonstudents.com/" data-zh="租房">Housing</a></li>
+    <li><a href="https://food.madisonstudents.com/" data-zh="吃饭">Food</a></li>
+    <li><a href="https://guide.madisonstudents.com/" data-zh="校园指南">Campus guide</a></li>
+    <li><a href="https://news.madisonstudents.com/" data-zh="新闻">News</a></li>
+  </ul>
+</main>
+<script>
+// Chinese labels for Chinese browsers or a saved choice
+(function () {
+  var l = null; try { l = localStorage.getItem("lang"); } catch (e) {}
+  if ((l || ((navigator.language || "").toLowerCase().indexOf("zh") === 0 ? "zh" : "en")) !== "zh") return;
+  document.documentElement.lang = "zh-CN"; document.title = "页面不存在 — Madison Students";
+  document.querySelectorAll("[data-zh]").forEach(function (e) { e.textContent = e.dataset.zh; });
+})();
+</script>
+</body>
+</html>
