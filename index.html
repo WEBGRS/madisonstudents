@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Madison Students · 麦屯工具站 — UW–Madison Courses, Housing, Food &amp; News</title>
-<meta name="description" content="How hard a course is, a place near campus in your budget, what to eat tonight, where to run errands, and today&#39;s campus news, for UW–Madison students. 麦屯工具站：威大选课、租房、吃饭、办事和每日新闻。">
+<title>Madison Students — UW–Madison Courses, Housing, Food &amp; News</title>
+<meta name="description" content="How hard a course is, a place near campus in your budget, what to eat tonight, where to run errands, and today&#39;s campus news, for UW–Madison students.">
 <link rel="canonical" href="https://madisonstudents.com/">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Madison Students · 麦屯工具站">
+<meta property="og:site_name" content="Madison Students">
 <meta property="og:url" content="https://madisonstudents.com/">
-<meta property="og:title" content="Madison Students · 麦屯工具站">
+<meta property="og:title" content="Madison Students">
 <meta property="og:description" content="Courses, housing, food, a campus guide and daily news for UW–Madison students.">
 <meta property="og:image" content="https://madisonstudents.com/img/share.jpg">
 <meta property="og:image:width" content="1200">
@@ -318,7 +318,7 @@ footer .by a { color: var(--navy); font-weight: 600; }
 </div></section>
 
 <footer><div class="wrap">
-  <div class="about"><b>Madison Students <span class="alias" lang="zh-CN">麦屯工具站</span></b><span data-i18n="note">Independent student project. Not affiliated with the University of Wisconsin–Madison.</span></div>
+  <div class="about"><b>Madison Students <span class="alias" lang="zh-CN" hidden>麦屯工具站</span></b><span data-i18n="note">Independent student project. Not affiliated with the University of Wisconsin–Madison.</span></div>
   <div><h4 data-i18n="toolsH">Tools</h4><ul>
     <li><a href="https://courses.madisonstudents.com/" data-i18n="courses">Courses</a></li>
     <li><a href="https://housing.madisonstudents.com/" data-i18n="housing">Housing</a></li>
@@ -418,6 +418,7 @@ footer .by a { color: var(--navy); font-weight: 600; }
   function apply() {
     var zh = lang === "zh";
     document.documentElement.lang = zh ? "zh-CN" : "en";
+    document.querySelector(".about .alias").hidden = !zh;
     document.title = zh ? "麦屯工具站 · Madison Students — 威大选课、租房、吃饭、新闻" : TITLE_EN;
     document.querySelectorAll("[data-i18n]").forEach(function (e) { e.textContent = T(e.dataset.i18n); });
     document.querySelectorAll("[data-i18n-ph]").forEach(function (e) { e.placeholder = zh ? ZH[e.dataset.i18nPh] : ENPH[e.dataset.i18nPh]; });
