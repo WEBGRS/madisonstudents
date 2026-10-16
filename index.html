@@ -24,7 +24,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://madisonstudents.com/#site","name":"Madison Students","alternateName":["麦屯工具站","madisonstudents.com"],"url":"https://madisonstudents.com/","inLanguage":["en","zh"],"publisher":{"@id":"https://madisonstudents.com/#org"}},{"@type":"Organization","@id":"https://madisonstudents.com/#org","name":"Madison Students","alternateName":"麦屯工具站","url":"https://madisonstudents.com/","logo":"https://madisonstudents.com/icon-512.png"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@600&family=Noto+Sans+SC:wght@900&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero-1920.webp" imagesrcset="img/hero-1280.webp 1280w, img/hero-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
 <style>
 :root {
@@ -116,20 +116,59 @@ h1, h2, h3 { font-variation-settings: "wdth" 112; letter-spacing: -.01em; }
 .tool > a:hover .go svg { transform: translateX(3px); }
 
 /* News */
-.news { background: var(--band); }
-.news-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 40px; align-items: start; }
-.news-side p { margin: 12px 0 20px; color: var(--ink-2); }
-.btn { display: inline-block; background: var(--news); color: #fff; text-decoration: none; font-weight: 700; border-radius: 999px; padding: 10px 20px; }
-.btn:hover { filter: brightness(.92); }
-.news-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.news-list a { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; row-gap: 3px; text-decoration: none; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
-.news-list a:hover { border-color: var(--news); }
-.score { grid-row: 1 / span 3; align-self: start; min-width: 44px; text-align: center; font-weight: 800; font-size: 14px; border-radius: 8px; padding: 4px 8px; background: #e8ebf7; color: #3c4b8c; }
-.score.hot { background: var(--news); color: #fff; }
-.news-list b { grid-column: 2; font-size: 17px; line-height: 1.35; }
-.news-list small { grid-column: 2; color: var(--ink-2); font-size: 14px; line-height: 1.45; }
-.news-empty { color: var(--ink-2); }
-
+.news {
+  background: var(--band); --nd: #3346b0; --nd2: #26378f;
+  --disp: Archivo, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, "PingFang SC", "Microsoft YaHei", monospace;
+}
+.news .sec-h { align-items: center; }
+.news-title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; }
+.upd { font-family: var(--mono); font-size: 12.5px; font-weight: 600; line-height: 1; letter-spacing: .04em; text-transform: uppercase; color: #fff; background: var(--nd); padding: 8px 16px 7px; white-space: nowrap; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); }
+.more { display: inline-flex; align-items: center; gap: 8px; flex: none; padding-bottom: 4px; border-bottom: 3px solid currentColor; font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--nd); text-decoration: none; }
+.more svg { width: 16px; height: 16px; transition: transform .15s; }
+.more:hover { color: var(--ink); }
+.more:hover svg { transform: translateX(3px); }
+.stories { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; counter-reset: story; }
+.stories > li { counter-increment: story; background: #fff; transition: background .15s; }
+.stories > li:not(.lead) { border-left: 6px solid var(--nd); clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%); }
+.stories > li:not(.lead):hover { background: #e9edfb; }
+.stories > li.lead { grid-column: 1 / -1; background: none; border: 0; }
+.story { display: flex; flex-direction: column; height: 100%; padding: 22px 22px 20px; text-decoration: none; color: var(--ink); }
+.kick { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; font-size: 12px; font-weight: 800; line-height: 1.2; letter-spacing: .08em; text-transform: uppercase; }
+.kick::before { content: counter(story, decimal-leading-zero); width: 100%; margin-bottom: 14px; font-size: 76px; font-weight: 800; line-height: .78; letter-spacing: -.04em; font-variation-settings: "wdth" 62; color: transparent; -webkit-text-stroke: 2px var(--nd); }
+.kicker { color: var(--nd); }
+.kick .dt { margin-left: auto; flex: none; font-family: var(--mono); font-weight: 600; letter-spacing: .02em; }
+.hl { margin-top: 10px; font-family: var(--disp); font-size: 22px; line-height: 1.08; font-weight: 800; letter-spacing: 0; word-spacing: .08em; font-variation-settings: "wdth" 74; }
+.sum { margin-top: 10px; font-size: 15px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; margin-top: auto; padding-top: 14px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+html[lang="zh-CN"] .hl { line-height: 1.3; word-spacing: 0; }
+.lead .story {
+  position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-rows: auto auto 1fr;
+  grid-template-areas: "k s" "h s" "m s"; column-gap: 56px; padding: 40px 44px;
+  background: var(--nd2); color: #fff; transition: background .15s;
+}
+.lead .story:hover { background: #1f2f80; }
+.lead .story::after { content: ""; position: absolute; top: 0; bottom: 0; right: -120px; width: 52%; background: var(--nd); transform: skewX(-16deg); pointer-events: none; }
+.lead .story::before {
+  content: attr(data-day); position: absolute; z-index: 1; right: -8px; bottom: -96px; pointer-events: none;
+  font-size: 340px; font-weight: 800; line-height: 1; letter-spacing: -.05em; font-variation-settings: "wdth" 62;
+  color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.22);
+}
+.lead .story > * { position: relative; z-index: 1; }
+.lead .kick { grid-area: k; justify-self: start; align-items: center; }
+.lead .kick::before { content: none; }
+.lead .kicker { color: var(--nd); background: #fff; padding: 6px 16px 5px; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); }
+.lead .kick .dt { margin-left: 6px; color: #fff; }
+.lead .hl { grid-area: h; margin-top: 22px; font-size: clamp(40px, 4.4vw, 60px); line-height: .94; letter-spacing: 0; word-spacing: .06em; font-variation-settings: "wdth" 66; text-transform: uppercase; }
+html[lang="zh-CN"] .lead .hl { font-size: clamp(34px, 3.6vw, 48px); line-height: 1.15; }
+.lead .sum { grid-area: s; align-self: center; display: block; margin: 0; font-size: 18px; line-height: 1.55; }
+.lead .sum::before { content: ""; display: block; width: 56px; height: 6px; margin-bottom: 18px; background: #fff; }
+.lead .meta { grid-area: m; align-self: end; padding-top: 30px; font-size: 13px; }
+.lead .meta svg { width: 18px; height: 18px; margin-left: 10px; transition: transform .15s; }
+.lead .story:hover .meta svg { transform: translateX(4px); }
+.stories > li.ph { min-height: 280px; }
+.stories > li.ph.lead { min-height: 300px; background: #fff; }
+.stories > li.news-empty { grid-column: 1 / -1; padding: 20px 22px; font-weight: 700; }
 /* University links */
 .links { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
 .links a { display: flex; gap: 12px; align-items: flex-start; height: 100%; text-decoration: none; border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: #fff; }
@@ -157,7 +196,11 @@ footer .by a { color: var(--navy); font-weight: 600; }
   .tools { grid-template-columns: 1fr; }
   .tools .tool { grid-column: auto; }
   .shot { height: auto; aspect-ratio: 16 / 10; }
-  .news-grid { grid-template-columns: 1fr; gap: 20px; }
+  .stories { grid-template-columns: 1fr; }
+  .lead .story { grid-template-columns: 1fr; grid-template-areas: "k" "h" "s" "m"; padding: 30px 24px; }
+  .lead .story::before { font-size: 220px; bottom: -60px; }
+  .lead .sum { margin-top: 20px; font-size: 17px; }
+  .kick::before { font-size: 48px; margin-bottom: 10px; }
   .links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
@@ -250,13 +293,12 @@ footer .by a { color: var(--navy); font-weight: 600; }
   </ul>
 </div></section>
 
-<section class="sec news" aria-labelledby="news-h"><div class="wrap news-grid">
-  <div class="news-side">
-    <h2 id="news-h" data-i18n="newsH">Today in Madison</h2>
-    <p><span data-i18n="newsD">What happened on campus and in Madison today, in a few lines of Chinese.</span> <span id="news-upd"></span></p>
-    <a class="btn" href="https://news.madisonstudents.com/" data-i18n="newsAll">See all news</a>
+<section class="sec news" aria-labelledby="news-h"><div class="wrap">
+  <div class="sec-h">
+    <div class="news-title"><h2 id="news-h" data-i18n="newsH">Today in Madison</h2><span class="upd" id="news-upd" hidden></span></div>
+    <a class="more" href="https://news.madisonstudents.com/"><span data-i18n="newsAll">All news</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
-  <ul class="news-list" id="news-list"><li class="news-empty" data-i18n="newsLoading">Loading the latest news…</li></ul>
+  <ul class="stories" id="news-list"></ul>
 </div></section>
 
 <section class="sec" aria-labelledby="links-h"><div class="wrap">
@@ -301,47 +343,77 @@ footer .by a { color: var(--navy); font-weight: 600; }
     housingD: "在预算内找到离学校近的房子。", h1b: "按租金、卧室数、宠物、停车筛选", h2b: "离你上课、上班的地方有多远", h3b: "最近的公交站，走过去要几分钟",
     foodD: "今晚吃什么，一下决定。", f1: "附近评分最高的店", f2: "能不能送、在哪个外卖平台点", f3: "选择困难就让它帮你挑一家",
     guideD: "日常要办的事，该去哪里。", g1: "亚洲超市、药店、急诊", g2: "办 SSN、开银行卡、通电通网", g3: "不知道去哪就直接问，中英文都行",
-    newsH: "今日要闻", newsD: "今天学校和麦迪逊发生了什么，用几句中文讲清楚。", newsAll: "查看全部新闻",
-    newsLoading: "正在加载最新新闻……", newsFail: "新闻暂时加载不出来，可以直接打开新闻页。", updated: "更新于",
+    newsH: "今日要闻", newsAll: "全部新闻", newsFail: "新闻暂时加载不出来，可以直接打开新闻页。",
     linksH: "学校常用链接", lCanvas: "课程主页和作业", lMyuw: "学生门户", lEnroll: "官方选课系统",
     lCalN: "校历", lCal: "学期日期和各种截止日", lUhsN: "学校医院 UHS", lUhs: "看病预约、心理咨询", lRecN: "学校健身中心", lRec: "健身房、游泳池和课程",
     lLibN: "图书馆", lLib: "自习室和数据库", lMetro: "公交线路和时刻", lIssN: "国际学生办公室 ISS", lIss: "签证、OPT、出入境", lCard: "学生卡",
     note: "学生个人项目，与威斯康星大学麦迪逊分校无官方关系。", creditsH: "致谢", photoBy: "州议会大厦照片", pd: "（公有领域）", source: "源代码", madeBy: "作者"
   };
   var CAT_ZH = { campus: "校园", academics: "学业", money: "学费与资助", international: "国际生", "health-safety": "健康与安全", events: "活动", city: "麦迪逊与威州" };
-  var EN = { newsFail: "News could not be loaded right now. Open the news page instead.", updated: "Updated" }, ENPH = {}, TITLE_EN = document.title;
+  var EN = { newsFail: "News could not be loaded right now. Open the news page instead." }, ENPH = {}, TITLE_EN = document.title;
   document.querySelectorAll("[data-i18n]").forEach(function (el) { EN[el.dataset.i18n] = el.textContent; });
   document.querySelectorAll("[data-i18n-ph]").forEach(function (el) { ENPH[el.dataset.i18nPh] = el.placeholder; });
   function saved() { try { return localStorage.getItem("lang"); } catch (e) { return null; } }
   var lang = saved() || ((navigator.language || "").toLowerCase().indexOf("zh") === 0 ? "zh" : "en");
   var btn = document.getElementById("lang"), digest = null, failed = false;
   function T(k) { return (lang === "zh" ? ZH[k] : null) || EN[k] || k; }
+  function toDate(s) { return new Date(/^\d{4}-\d\d-\d\d$/.test(s || "") ? s + "T12:00" : s); }
   function fmtDate(s) {
-    var d = new Date(s); if (isNaN(d)) return "";
+    var d = toDate(s); if (isNaN(d)) return "";
     return lang === "zh" ? (d.getMonth() + 1) + "月" + d.getDate() + "日" : d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
   }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
-  // Top items of the last week from the news site (feed text is untrusted: text nodes only, http(s) links only)
-  function renderNews() {
-    var list = document.getElementById("news-list"), upd = document.getElementById("news-upd");
-    list.textContent = "";
-    if (!digest) { list.appendChild(el("li", "news-empty", T(failed ? "newsFail" : "newsLoading"))); return; }
-    upd.textContent = digest.generated ? T("updated") + " " + fmtDate(digest.generated) + (lang === "zh" ? "。" : ".") : "";
-    var items = [];
-    (digest.days || []).slice(0, 7).forEach(function (day) { (day.items || []).forEach(function (it) { items.push(it); }); });
-    items = items.filter(function (it) { return /^https?:\/\//.test(it.url || "") && (it.title || it.zh_title); });
-    items.sort(function (a, b) { return (b.importance || 0) - (a.importance || 0) || String(b.published || "").localeCompare(String(a.published || "")); });
-    items.slice(0, 5).forEach(function (it) {
-      var a = el("a"); a.href = it.url; a.target = "_blank"; a.rel = "noopener";
-      var cat = lang === "zh" ? (CAT_ZH[it.category] || "") : ((digest.categories || {})[it.category] || "");
-      a.appendChild(el("span", "score" + ((it.importance || 0) >= 4 ? " hot" : ""), (it.importance || "?") + "/5"));
-      a.appendChild(el("b", null, lang === "zh" ? (it.zh_title || it.title) : (it.title || it.zh_title)));
-      if (lang === "zh" && it.zh_points) a.appendChild(el("small", null, it.zh_points));
-      a.appendChild(el("small", null, [it.source, cat, fmtDate(it.published)].filter(Boolean).join(" · ")));
-      var li = el("li"); li.appendChild(a); list.appendChild(li);
+  // Most important stories of the last 7 days, deduped, at most 2 per category
+  function pickStories(n) {
+    var seen = {}, all = [], per = {}, out = [];
+    (digest.days || []).forEach(function (day) {
+      (day.items || []).forEach(function (it) {
+        if (it.drop || !/^https?:\/\//.test(it.url || "") || !(it.title || it.zh_title)) return;
+        var key = String(it.title || it.zh_title).toLowerCase().replace(/[^a-z0-9一-鿿]+/g, "");
+        if (seen[key] || seen[it.url]) return;
+        seen[key] = seen[it.url] = true;
+        all.push({ it: it, t: toDate(it.published || day.date).getTime() || 0 });
+      });
     });
-    if (!items.length) list.appendChild(el("li", "news-empty", T("newsFail")));
+    all.sort(function (a, b) { return (b.it.importance || 0) - (a.it.importance || 0) || b.t - a.t; });
+    var cutoff = (toDate(digest.generated).getTime() || Date.now()) - 7 * 864e5;
+    var pool = all.filter(function (x) { return x.t >= cutoff; }).concat(all.filter(function (x) { return x.t < cutoff; }));
+    pool.forEach(function (x) { var c = x.it.category; if (out.length < n && (per[c] || 0) < 2) { per[c] = (per[c] || 0) + 1; out.push(x.it); } });
+    pool.forEach(function (x) { if (out.length < n && out.indexOf(x.it) < 0) out.push(x.it); });
+    return out;
+  }
+  // Feed text is untrusted: text nodes only, http(s) links only
+  function renderNews() {
+    var list = document.getElementById("news-list"), upd = document.getElementById("news-upd"), zh = lang === "zh", n = 5;
+    list.textContent = "";
+    if (!digest) {
+      if (failed) { list.appendChild(el("li", "news-empty", T("newsFail"))); return; }
+      for (var i = 0; i < n; i++) list.appendChild(el("li", "ph" + (i === 0 ? " lead" : "")));
+      return;
+    }
+    var day = fmtDate(digest.generated);
+    upd.hidden = !day;
+    upd.textContent = zh ? day + "更新" : "Updated " + day;
+    var stories = pickStories(n);
+    stories.forEach(function (it, i) {
+      var a = el("a", "story"); a.href = it.url; a.target = "_blank"; a.rel = "noopener";
+      var lead = i === 0, top = el("span", "kick"), meta = el("span", "meta"), dt = el("span", "dt", fmtDate(it.published));
+      top.appendChild(el("span", "kicker", zh ? (CAT_ZH[it.category] || "") : ((digest.categories || {})[it.category] || "")));
+      a.appendChild(top);
+      a.appendChild(el("b", "hl", zh ? (it.zh_title || it.title) : (it.title || it.zh_title)));
+      var sum = zh ? it.zh_points : it.en_points;
+      if (sum) a.appendChild(el("span", "sum", sum));
+      top.appendChild(dt);
+      meta.appendChild(el("span", "src", it.source || ""));
+      if (lead) {
+        a.dataset.day = toDate(it.published).getDate() || "";
+        meta.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>');
+      }
+      a.appendChild(meta);
+      var li = el("li", lead ? "lead" : null); li.appendChild(a); list.appendChild(li);
+    });
+    if (!stories.length) list.appendChild(el("li", "news-empty", T("newsFail")));
   }
   function apply() {
     var zh = lang === "zh";
