@@ -218,8 +218,8 @@ footer .by a { color: var(--navy); font-weight: 600; }
   .links { grid-template-columns: 1fr; }
   footer .wrap { grid-template-columns: 1fr; }
 }
-/* Phones: no Star / Feedback pill, update note or feature lists */
-@media (max-width: 760px) { :root { --wgfb-display: none; } .hero-note, .tool .feat { display: none; } }
+/* Phones: the top bar scrolls with the page; no Star / Feedback pill, update note or feature lists */
+@media (max-width: 760px) { :root { --wgfb-display: none; } .top { position: relative; } .hero-note, .tool .feat { display: none; } }
 @media (max-width: 420px) {
   .top .wrap { gap: 12px; }
   .brand { font-size: 16px; gap: 8px; font-variation-settings: "wdth" 100; }
@@ -444,7 +444,6 @@ footer .by a { color: var(--navy); font-weight: 600; }
     .catch(function () { failed = true; renderNews(); });
 })();
 </script>
-<script src="navhide.js" data-nav=".top" data-max="760" data-mode="slide" defer></script>
 <script src="feedback.js" data-site="hub" data-star="WEBGRS/madisonstudents" defer></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bac1569834fa4682962ab1c4355c6474"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
