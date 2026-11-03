@@ -194,7 +194,7 @@ footer .by a { color: var(--navy); font-weight: 600; }
 @media (max-width: 980px) {
   .nav { display: none; }
   #lang { margin-left: auto; }
-  .tools { grid-template-columns: 1fr; }
+  .tools { grid-template-columns: minmax(0, 1fr); }
   .tools .tool { grid-column: auto; }
   .shot { height: auto; aspect-ratio: 16 / 10; }
   .stories { grid-template-columns: 1fr; }
@@ -215,6 +215,8 @@ footer .by a { color: var(--navy); font-weight: 600; }
   .shot { padding: 16px 16px 0; }
   .txt { padding: 20px 20px 22px; }
   .tool h3 { font-size: 23px; }
+  .shot { aspect-ratio: auto; height: 150px; padding: 14px 14px 0; }
+  .win img { flex: none; width: 640px; max-width: none; height: auto; object-fit: initial; }
   .links { grid-template-columns: 1fr; }
   footer .wrap { grid-template-columns: 1fr; }
 }
